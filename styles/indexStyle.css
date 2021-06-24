@@ -60,7 +60,94 @@ hr{
 .register{
   width: 100%;
   height: 356px;
-  background-color: #EFEFEF;
+  background-color: #F5F5F5;
   border-radius: 4px;
   box-shadow: 0px 2px 2px #00000067;
+}
+
+form{
+  display: inline-block;
+}
+
+form > div > p{
+  font: normal normal normal 14px/20px Roboto;
+  color: #202020;
+}
+
+form > div > input, select{
+  height: 30px;
+  margin-top: 5px;
+  background: #FFFFFF;
+  border: 1px solid #D0D0D0;
+  border-radius: 4px;
+
+  font: normal normal normal 14px/18px Roboto;
+  padding-left: 10px;
+}
+
+.name, .cpf, .birth, .state, .city{
+  float: left;
+  margin-left: 25px;
+  margin-top: 15px;
+}
+
+.name > input{
+  width: 716px;
+}
+
+.cpf > input{
+  width: 304px;
+}
+
+.birth > input{
+  width: 156px;
+}
+
+.state > select{
+  width: 500px;
+}
+
+.city > select{
+  width: 520px;
+}
+
+form > button{
+  height: 30px;
+  width: 156px;
+  background-color: #65BF24;
+  border: none;
+  border-radius: 4px;
+  float: left;
+  margin-left: 25px;
+  margin-top: 40px;
+  padding-bottom: 2px;;
+
+  font: normal normal bold 12px Roboto;
+  color: #FFFFFF;
+  text-align: center;
+
+  cursor: pointer;
+}
+
+form > button:hover{
+  background-color: #5CAC21;
+}
+
+table{
+  width: 1236px;
+  margin: 20px auto 0 auto;
+  border-collapse: collapse;
+}
+
+.tableHeader{
+  height: 40px;
+  background-color: #E0E0E0;
+  text-align: left;
+}
+
+.tableHeader th{
+  font: normal normal bold 13px/24px Roboto;
+  color: #101010;
+  padding-left: 10px;
+  border: 1px solid rgba(81, 81, 81,0.15);
 }
