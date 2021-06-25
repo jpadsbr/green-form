@@ -1,4 +1,4 @@
-function verifyNumDigits(field, value) {
+function verifyNaN(field, value) {
   if (isNaN(value[value.length - 1])) {
     field.value = value.substring(0, value.length - 1);
     return;
@@ -8,18 +8,31 @@ function verifyNumDigits(field, value) {
 function CPFMask(cpf) {
   var value = cpf.value;
 
-  verifyNumDigits(cpf, value);
+  verifyNaN(cpf, value);
 
   cpf.setAttribute("maxlength", "14");
-  if (value.length == 3 || value.length == 7) cpf.value += ".";
-  if (value.length == 11) cpf.value += "-";
+  document.addEventListener('keydown', function (event) {
+    if (event.keyCode != 46 && event.keyCode != 8) {
+      var i = cpf.value.length;
+      if (i === 3 || i === 7)
+        cpf.value = cpf.value + ".";
+      else if (i === 11)
+        cpf.value = cpf.value + "-";
+    }
+  });
 }
 
 function BirthMask(birth) {
   var value = birth.value;
 
-  verifyNumDigits(birth, value);
+  verifyNaN(birth, value);
 
   birth.setAttribute("maxlength", "10");
-  if (value.length == 2 || value.length == 5) birth.value += "/";
+  document.addEventListener('keydown', function (event) {
+    if (event.keyCode != 46 && event.keyCode != 8) {
+      var i = birth.value.length;
+      if (i === 2 || i === 5)
+        birth.value = birth.value + "/";
+    }
+  });
 }

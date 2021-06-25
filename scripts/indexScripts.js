@@ -41,7 +41,7 @@ submit.addEventListener("click", function (e) {
   var cpf = form.elements['cpf'].value;
   if (CPFValidation(cpf) == false) {
     throw new Error('CPF Inválido');
-  }
+  } else cpf = CPFValidation(cpf);
 
   var birth = form.elements['birth'].value;
   if (BirthValidation(birth) == false) {
@@ -63,7 +63,14 @@ submit.addEventListener("click", function (e) {
     throw new Error('Cidade Inválida')
   }
 
-  table += "<tr><td>" + name + "</td><td>" + cpf + "</td><td>" + birth + "</td><td>" + age + "</td><td>" + state + "</td><td>" + city + "</td></tr>"
+  table += "<tr id='tableItem'><td class='texts'>" + name + "</td>" +
+    "<td class='texts'>" + cpf + "</td>" +
+    "<td class='texts'>" + birth + "</td>" +
+    "<td class='texts'>" + age + "</td>" +
+    "<td class='texts'>" + state + "</td>" +
+    "<td class='texts'>" + city + "</td>" +
+    "<td class='buttons'><img id='edit' src='./assets/images/edit.svg'</td>" +
+    "<td class='buttons'><img id='delete' src='./assets/images/delete.svg'</td></tr>"
   document.getElementById('table').innerHTML = table;
 
   form.reset()

@@ -3,7 +3,7 @@ function NameValidation(name) {
 }
 
 function CPFValidation(cpf) {
-  cpf = cpf.replace(/[^\d]+/g, '');
+  cpf = cpf.replace(/\D/g, "");
 
   if (cpf == '') return false;
 
@@ -38,7 +38,11 @@ function CPFValidation(cpf) {
   if (rev != parseInt(cpf.charAt(10)))
     return false;
 
-  return true;
+  cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+  cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+  cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2")
+
+  return cpf;
 }
 
 function BirthValidation(birth) {
