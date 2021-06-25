@@ -21,69 +21,70 @@
     <div class='mainHeader'>
       <img src="./assets/images/icon.svg" alt="">
       <h1>Cadastro Usuário</h1>
-      <p>* campos obrigatórios</p>
+      <p>*campos obrigatórios</p>
     </div>
 
     <hr>
 
     <div class='register'>
-      <form>
+      <form id='form' method='get'>
         <div class="name">
           <p>Nome Completo*</p>
-          <input type="text" name="name" required>
+          <input type="text" name="name" id='name'>
         </div>
         <div class="cpf">
           <p>CPF*</p>
-          <input type="text" name="cpf" required placeholder="000.000.000-00">
+          <input type="text" name="cpf" id='cpf' placeholder="000.000.000-00" oninput="CPFMask(this)">
         </div>
         <div class="birth">
           <p>Data de Nascimento*</p>
-          <input type="text" name="birth" required placeholder="dd/mm/yyyy">
+          <input type="text" name="birth" id='birth' placeholder="dd/mm/aaaa" oninput="BirthMask(this)">
         </div>
-        <div class="state">
+        <div class=" state">
           <p>Estado*</p>
-          <select name="state" required>
-            <option value="state">Selecione</option>
-            <option value="ac">Acre</option>
-            <option value="al">Alagoas</option>
-            <option value="am">Amazonas</option>
-            <option value="ap">Amapá</option>
-            <option value="ba">Bahia</option>
-            <option value="ce">Ceará</option>
-            <option value="df">Distrito Federal</option>
-            <option value="es">Espírito Santo</option>
-            <option value="go">Goiás</option>
-            <option value="ma">Maranhão</option>
-            <option value="mt">Mato Grosso</option>
-            <option value="ms">Mato Grosso do Sul</option>
-            <option value="mg">Minas Gerais</option>
-            <option value="pa">Pará</option>
-            <option value="pb">Paraíba</option>
-            <option value="pr">Paraná</option>
-            <option value="pe">Pernambuco</option>
-            <option value="pi">Piauí</option>
-            <option value="rj">Rio de Janeiro</option>
-            <option value="rn">Rio Grande do Norte</option>
-            <option value="ro">Rondônia</option>
-            <option value="rs">Rio Grande do Sul</option>
-            <option value="rr">Roraima</option>
-            <option value="sc">Santa Catarina</option>
-            <option value="se">Sergipe</option>
-            <option value="sp">São Paulo</option>
-            <option value="to">Tocantins</option>
+          <select name="state" id="state" onchange=(searchCity(this.value))>
+            <option value="Selecione">Selecione</option>
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SP">São Paulo</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
           </select>
         </div>
         <div class="city">
           <p>Cidade*</p>
-          <select name="city" required>
-            <option value="city">Selecione</option>
+          <select name="city" id="city">
+            <option value="Selecione">Selecione</option>
           </select>
         </div>
 
-        <button type="submit"><img src="./assets/images/seta_incluir.svg"> INCLUIR</button>
+        <button type="submit" id="submit"><img src="./assets/images/seta_incluir.svg">
+          INCLUIR</button>
       </form>
 
-      <table>
+      <table id="table">
         <tr class="tableHeader">
           <th>NOME COMPLETO</th>
           <th>CPF</th>
@@ -94,40 +95,13 @@
           <th>EDITAR</th>
           <th>EXCLUIR</th>
         </tr>
-        <tr>
-          <td>Lorem</td>
-          <td>Lorem</td>
-          <td>Lorem</td>
-          <td>Lorem</td>
-          <td>Lorem</td>
-          <td>Lorem</td>
-          <td>Lorem</td>
-          <td>Lorem</td>
-        </tr>
-        <tr>
-          <td>Lorem</td>
-          <td>Lorem</td>
-          <td>Lorem</td>
-          <td>Lorem</td>
-          <td>Lorem</td>
-          <td>Lorem</td>
-          <td>Lorem</td>
-          <td>Lorem</td>
-        </tr>
-        <tr>
-          <td>Lorem</td>
-          <td>Lorem</td>
-          <td>Lorem</td>
-          <td>Lorem</td>
-          <td>Lorem</td>
-          <td>Lorem</td>
-          <td>Lorem</td>
-          <td>Lorem</td>
-        </tr>
       </table>
     </div>
   </main>
 </body>
 <script src="./scripts/indexScripts.js"></script>
+<script src="./scripts/locations.js"></script>
+<script src="./scripts/validations.js"></script>
+<script src="./scripts/masks.js"></script>
 
 </html>

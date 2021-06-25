@@ -65,16 +65,16 @@ hr{
   box-shadow: 0px 2px 2px #00000067;
 }
 
-form{
+#form{
   display: inline-block;
 }
 
-form > div > p{
+#form > div > p{
   font: normal normal normal 14px/20px Roboto;
   color: #202020;
 }
 
-form > div > input, select{
+#form > div > input, select{
   height: 30px;
   margin-top: 5px;
   background: #FFFFFF;
@@ -91,27 +91,27 @@ form > div > input, select{
   margin-top: 15px;
 }
 
-.name > input{
+#name{
   width: 716px;
 }
 
-.cpf > input{
+#cpf{
   width: 304px;
 }
 
-.birth > input{
+#birth{
   width: 156px;
 }
 
-.state > select{
+#state{
   width: 500px;
 }
 
-.city > select{
+#city{
   width: 520px;
 }
 
-form > button{
+#submit{
   height: 30px;
   width: 156px;
   background-color: #65BF24;
@@ -129,11 +129,11 @@ form > button{
   cursor: pointer;
 }
 
-form > button:hover{
+#submit:hover{
   background-color: #5CAC21;
 }
 
-table{
+#table{
   width: 1236px;
   margin: 20px auto 0 auto;
   border-collapse: collapse;
