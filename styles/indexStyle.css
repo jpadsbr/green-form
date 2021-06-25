@@ -158,13 +158,18 @@ hr{
   border: 1px solid rgba(81, 81, 81,0.15);
 }
 
-#tableItem{
+.tableItem{
   height: 39px;
-  background: #FFFFFF;
+  background-color: #FFFFFF;
   text-align: left;
+  transition: 0.1s;
 }
 
-#tableItem > td{
+.tableItem:hover{
+  background-color: #EFEFEF;
+}
+
+.tableItem > td{
   border: 1px solid rgba(81, 81, 81,0.15);
 }
 
@@ -178,6 +183,8 @@ hr{
   text-align: center;
 }
 
-#edit, #delete{
+.edit, .delete{
   cursor: pointer;
+  border: none;
+  background: none;
 }

@@ -5,10 +5,7 @@ function NameValidation(name) {
 function CPFValidation(cpf) {
   cpf = cpf.replace(/\D/g, "");
 
-  if (cpf == '') return false;
-
-  if (cpf.length != 11 ||
-    cpf == "00000000000" ||
+  if (cpf == "00000000000" ||
     cpf == "11111111111" ||
     cpf == "22222222222" ||
     cpf == "33333333333" ||
@@ -46,10 +43,6 @@ function CPFValidation(cpf) {
 }
 
 function BirthValidation(birth) {
-  if (birth.length != 10) {
-    return false;
-  }
-
   var parts = birth.split("/");
 
   if ((parts[0] > 31) || (parts[0] < 1)) {
@@ -63,6 +56,33 @@ function BirthValidation(birth) {
   if ((parts[1] == 02) & (parts[0] > 29)) {
     return false;
   }
+}
+
+function getDate() {
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1;
+  var yyyy = today.getFullYear();
+
+  if (dd < 10) {
+    dd = '0' + dd;
+  }
+
+  if (mm < 10) {
+    mm = '0' + mm;
+  }
+
+  return [dd, mm, yyyy];
+}
+
+function getAge(currentDate, birth) {
+  birthSplitted = birth.split('/')
+  age = currentDate[2] - birthSplitted[2]
+  if (currentDate[1] < birthSplitted[1] || currentDate[1] == currentDate[1] && currentDate[0] < birthSplitted[0]) {
+    age--;
+  }
+
+  return age;
 }
 
 function AgeValidation(age) {

@@ -1,78 +1,90 @@
 var form = document.getElementById('form');
 var submit = document.getElementById('submit');
+var userNumber = 0;
+var userList = {};
 
-function getDate() {
-  var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth() + 1;
-  var yyyy = today.getFullYear();
-
-  if (dd < 10) {
-    dd = '0' + dd;
+class User {
+  constructor(name, cpf, birth, age, state, city) {
+    this.name = name;
+    this.cpf = cpf;
+    this.birth = birth;
+    this.age = age;
+    this.state = state;
+    this.city = city;
   }
 
-  if (mm < 10) {
-    mm = '0' + mm;
+  validator() {
+    if (NameValidation(this.name) == false) {
+      throw new Error('Nome Inválido');
+    }
+
+    if (CPFValidation(this.cpf) == false) {
+      throw new Error('CPF Inválido');
+    } else this.cpf = CPFValidation(this.cpf);
+
+    if (BirthValidation(this.birth) == false) {
+      throw new Error('Data de Nascimento Inválida');
+    }
+
+    if (AgeValidation(this.age) == false) {
+      throw new Error('Data de Nascimento Inválida');
+    }
+
+    if (LocationValidation(this.state) == false) {
+      throw new Error('Estado Inválido');
+    }
+
+    if (LocationValidation(this.city) == false) {
+      throw new Error('Cidade Inválida');
+    }
   }
 
-  return [dd, mm, yyyy];
-}
-
-function getAge(currentDate, birth) {
-  birthSplitted = birth.split('/')
-  age = currentDate[2] - birthSplitted[2]
-  if (currentDate[1] < birthSplitted[1] || currentDate[1] == currentDate[1] && currentDate[0] < birthSplitted[0]) {
-    age--;
+  editUser(userNumber) {
+    console.log('edit' + userNumber)
   }
 
-  return age;
+  deleteUser(userNumber) {
+    console.log('delete' + userNumber)
+
+    var line = document.getElementById(`user${userNumber}`);
+
+    delete userList[userNumber]
+    console.log(userList)
+    line.remove();
+  }
 }
 
 submit.addEventListener("click", function (e) {
   e.preventDefault();
 
-  var table = document.getElementById('table').innerHTML;
-
   var name = form.elements['name'].value;
-  if (NameValidation(name) == false) {
-    throw new Error('Nome Inválido');
-  }
-
   var cpf = form.elements['cpf'].value;
-  if (CPFValidation(cpf) == false) {
-    throw new Error('CPF Inválido');
-  } else cpf = CPFValidation(cpf);
-
   var birth = form.elements['birth'].value;
-  if (BirthValidation(birth) == false) {
-    throw new Error('Data de Nascimento Inválida');
-  }
-
   var age = getAge(getDate(), birth)
-  if (AgeValidation(age) == false) {
-    throw new Error('Data de Nascimento Inválida')
-  }
-
   var state = form.elements['state'].value;
-  if (LocationValidation(state) == false) {
-    throw new Error('Estado Inválido');
-  }
-
   var city = form.elements['city'].value;
-  if (LocationValidation(city) == false) {
-    throw new Error('Cidade Inválida')
-  }
+  var user = new User(name, cpf, birth, age, state, city);
 
-  table += "<tr id='tableItem'><td class='texts'>" + name + "</td>" +
-    "<td class='texts'>" + cpf + "</td>" +
-    "<td class='texts'>" + birth + "</td>" +
-    "<td class='texts'>" + age + "</td>" +
-    "<td class='texts'>" + state + "</td>" +
-    "<td class='texts'>" + city + "</td>" +
-    "<td class='buttons'><img id='edit' src='./assets/images/edit.svg'</td>" +
-    "<td class='buttons'><img id='delete' src='./assets/images/delete.svg'</td></tr>"
+  user.validator();
+
+  userNumber++;
+  var user$userNumber = user;
+  userList[userNumber] = { 'user': user$userNumber }
+
+  var table = document.getElementById('table').innerHTML;
+  table += `<tr class=tableItem id='user${userNumber}'>` +
+    "<td class='texts'>" + user$userNumber.name + "</td>" +
+    "<td class='texts'>" + user$userNumber.cpf + "</td>" +
+    "<td class='texts'>" + user$userNumber.birth + "</td>" +
+    "<td class='texts'>" + user$userNumber.age + "</td>" +
+    "<td class='texts'>" + user$userNumber.state + "</td>" +
+    "<td class='texts'>" + user$userNumber.city + "</td>" +
+    `<td class='buttons'><button class='edit' id='edit${userNumber}' onclick='userList[${userNumber}].user.editUser(${userNumber})'><img src='./assets/images/edit.svg'></button></td>` +
+    `<td class='buttons'><button class='delete' id='delete${userNumber}' onclick='userList[${userNumber}].user.deleteUser(${userNumber})'><img src='./assets/images/delete.svg'></button></td>` +
+    "</tr>"
   document.getElementById('table').innerHTML = table;
 
-  form.reset()
+  console.log(userList);
 
+  form.reset()
 });
