@@ -25,7 +25,7 @@ header > img{
 
 main{
   margin: 115px auto 0 auto;
-  width: 1276px;
+  max-width: 1276px;
   background-color: #FFFFFF;
 }
 
@@ -72,6 +72,7 @@ hr{
 
 #form{
   display: inline-block;
+  max-width: 100%;
 }
 
 #form > div > p{
@@ -85,7 +86,7 @@ hr{
   background: #FFFFFF;
   border: 1px solid #D0D0D0;
   border-radius: 4px;
-
+  
   font: normal normal normal 14px/18px Roboto;
   padding-left: 10px;
 }
@@ -126,11 +127,11 @@ hr{
   margin-left: 25px;
   margin-top: 40px;
   padding-bottom: 2px;;
-
+  
   font: normal normal bold 12px Roboto;
   color: #FFFFFF;
   text-align: center;
-
+  
   cursor: pointer;
   transition: 0.2s;
 }
@@ -139,8 +140,13 @@ hr{
   background-color: #5CAC21;
 }
 
+.tableWrapper{
+  overflow-x: auto;
+}
+
 #table{
-  width: 1236px;
+  width: 96%;
+  min-width: 800px;
   margin: 20px auto 0 auto;
   border-collapse: collapse;
 }
@@ -187,4 +193,60 @@ hr{
   cursor: pointer;
   border: none;
   background: none;
+}
+
+@media only screen and (max-width: 1330px) {
+  main{
+    max-width: 1100px;
+  }
+
+  #name{
+    width: 500px;
+  }
+
+  #birth{
+    width: 190px;
+  }
+
+  #submit{
+    margin-top: 30px;
+  }
+}
+
+@media only screen and (max-width:1150px) {
+  main{
+    max-width: 950px;
+  }
+
+  #cpf, #birth{
+    width: 375px;
+  }
+
+  #city{
+    width: 718px;
+  }
+
+  #submit{
+    margin-top: 40px;
+  }
+}
+
+@media only screen and (max-width:1000px) {
+  main{
+    width: 400px;
+  }
+
+  #submit{
+    margin-top: 30px;
+    margin-left: 120px;
+  }
+  
+  #name, #cpf, #birth, #state, #city, #table{
+    max-width: 350px;
+  }
+
+  .tableWrapper{
+    width: 350px;
+    margin: 0 auto;
+  }
 }

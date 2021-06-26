@@ -131,5 +131,6 @@ submit.addEventListener("click", function (e) {
     editState = false;
 
   }
+
   form.reset()
 });
