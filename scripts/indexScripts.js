@@ -48,14 +48,12 @@ class User {
 
     editState = true;
     editUserId = userNumber;
-
   }
 
   deleteUser(userNumber) {
     var line = document.getElementById(`user${userNumber}`);
     delete userList[userNumber]
     line.remove();
-
   }
 }
 
@@ -71,6 +69,15 @@ submit.addEventListener("click", function (e) {
 
   if (editState == false) {
     var user = new User(name, cpf, birth, age, state, city);
+
+    if (userList.length != 0) {
+      for (person in userList) {
+        if (userList[person].user.cpf == cpf) {
+          window.alert('CPF Já Cadastrado')
+          throw new Error('CPF Já Cadastrado');
+        }
+      }
+    }
 
     user.validator();
 
@@ -102,6 +109,13 @@ submit.addEventListener("click", function (e) {
     userEdit.state = state;
     userEdit.city = city;
 
+    for (person in userList) {
+      if ((userList[person].user.cpf == cpf) && (person != editUserId)) {
+        window.alert('CPF Já Cadastrado')
+        throw new Error('CPF Já Cadastrado');
+      }
+    }
+
     userEdit.validator();
 
     var table = document.getElementById(`user${editUserId}`).innerHTML =
@@ -113,12 +127,9 @@ submit.addEventListener("click", function (e) {
       `<td class='texts' id='city${editUserId}'>` + userEdit.city + "</td>" +
       `<td class='buttons'><button class='edit' id='edit${editUserId}' onclick='userList[${editUserId}].user.editUser(${editUserId})'><img src='./assets/images/edit.svg'></button></td>` +
       `<td class='buttons'><button class='delete' id='delete${editUserId}' onclick='userList[${editUserId}].user.deleteUser(${editUserId})'><img src='./assets/images/delete.svg'></button></td>`
-    document.getElementById(`user${editUserId}`);
 
     editState = false;
 
   }
   form.reset()
-  console.log(userList)
-
 });
