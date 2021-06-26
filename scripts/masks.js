@@ -7,7 +7,6 @@ function verifyNaN(field, value) {
 
 function CPFMask(cpf) {
   var value = cpf.value;
-
   verifyNaN(cpf, value);
 
   cpf.setAttribute("maxlength", "14");
@@ -24,7 +23,6 @@ function CPFMask(cpf) {
 
 function BirthMask(birth) {
   var value = birth.value;
-
   verifyNaN(birth, value);
 
   birth.setAttribute("maxlength", "10");

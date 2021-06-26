@@ -243,7 +243,6 @@ var locations = {
     "name": "Amapá",
     "cities": [
       "Selecione",
-      "Amapá",
       "Calçoene",
       "Cutias",
       "Ferreira Gomes",
